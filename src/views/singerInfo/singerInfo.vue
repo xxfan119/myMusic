@@ -127,7 +127,7 @@ export default {
   watch: {
     $route(to, from) {
       if (
-        (to.name === "singerinfo" && from.path !== "singer") ||
+        (to.name === "singerinfo" && from.path === "/singer") ||
         to.name === from.name
       ) {
         (this.params = {

@@ -93,6 +93,9 @@ export default {
     $route(to, from) {
       this.infoShow = false;
       this.listShow = false;
+      if (to.matched[0].path === "/mvinfo/:id") {
+        this.audio.pause();
+      }
     },
   },
   methods: {
@@ -202,33 +205,27 @@ export default {
       this.lyric.lyric = result.filter((item) => item[1] !== "");
     },
     saveList() {
-      localStorage.setItem("list", JSON.stringify(this.playList));
-      localStorage.setItem("index", this.playIndex);
+      if (this.playList.length !== 0) {
+        localStorage.setItem("list", JSON.stringify(this.playList));
+        localStorage.setItem("index", this.playIndex);
+      }
     },
     getList() {
-      if (
-        localStorage.getItem("index") !== -1 &&
-        localStorage.getItem("list") !== []
-      ) {
-        this.$store.commit(
-          "addPlayList",
-          JSON.parse(localStorage.getItem("list"))
-        );
-        this.$store.commit(
-          "setPlayIndex",
-          JSON.parse(localStorage.getItem("index"))
-        );
-      }
+      this.$store.commit(
+        "addPlayList",
+        JSON.parse(localStorage.getItem("list"))
+      );
+      this.$store.commit("setPlayIndex", localStorage.getItem("index"));
     },
   },
   created() {
     this.$nextTick(() => {
       this.audio = this.$refs.audio;
-      // this.getList()
+      this.getList();
     });
   },
   beforeDestroy() {
-    // this.saveList()
+    this.saveList();
   },
 };
 </script>

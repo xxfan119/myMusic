@@ -22,10 +22,10 @@ module.exports = {  
     devServer: {
         proxy: {
             '/api': {
-                target: 'https://api.qq.jsososo.com', //对应自己的接口
+                target: 'https://api.qq.jsososo.com',
                 // target: 'http://127.0.0.1:3300',
                 // target: 'http://123.56.124.143:3300',
-
+       
                 changeOrigin: true,
                 ws: true,
                 secure: false,
@@ -35,4 +35,7 @@ module.exports = {  
             }
         }
     },
+    publicPath: './',
+    outputDir:"dist",  //打包时生成的生产环境构建文件的目录
+    assetsDir: 'public', 
 }
