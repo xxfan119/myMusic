@@ -50,7 +50,11 @@
               <div class="rsonglist">
                 <div><span>相关歌单</span> <span>换一换</span></div>
                 <ul>
-                  <li v-for="item of RSongList" :key="item.tid">
+                  <li
+                    v-for="(item, i) of RSongList"
+                    :key="item.tid"
+                    @click="toSongList(i)"
+                  >
                     <div>
                       <img :src="item.imgurl" />
                       <div>
@@ -63,9 +67,13 @@
                 </ul>
               </div>
               <div class="rmv">
-                <div><span>相关歌单</span> <span>换一换</span></div>
+                <div><span>相关视频</span> <span>换一换</span></div>
                 <ul>
-                  <li v-for="item of RMv" :key="item.mvid">
+                  <li
+                    v-for="(item, i) of RMv"
+                    :key="item.mvid"
+                    @click="toMV(i)"
+                  >
                     <div>
                       <img :src="item.picurl" />
                       <div>
@@ -278,6 +286,12 @@ export default {
     },
   },
   methods: {
+    toSongList(index) {
+      this.$router.push(`/songlistinfo/${this.RSongList[index].tid}`);
+    },
+    toMV(index) {
+      this.$router.push(`/mvinfo/${this.RMv[index].vid}`);
+    },
     updateValue() {
       if (this.lyric.lyric[this.lyricIndex + 1]) {
         if (
