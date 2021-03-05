@@ -44,7 +44,7 @@
           </div>
           <div>
             <span
-              @click="playmv(index)"
+              @click.stop="playmv(index)"
               class="iconfont icon-lianhe11 mv"
             ></span>
           </div>

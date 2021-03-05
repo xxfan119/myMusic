@@ -22,7 +22,10 @@
               <span>{{ item.album.name }}</span>
             </div>
           </div>
-          <span @click="playmv(index)" class="iconfont icon-lianhe11 mv"></span>
+          <span
+            @click.stop="playmv(index)"
+            class="iconfont icon-lianhe11 mv"
+          ></span>
         </li>
       </ul>
     </van-list>
