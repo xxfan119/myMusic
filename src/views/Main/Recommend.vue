@@ -62,7 +62,7 @@ export default {
       this.reList = res.data.data.list;
     },
   },
-  created() {
+  mounted() {
     //  this.fecthdaily()
     this.fecthRecommedMe();
   },

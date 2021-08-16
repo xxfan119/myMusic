@@ -113,7 +113,7 @@ export default {
       }
     },
   },
-  created() {
+  mounted() {
     this.getInfo();
     this.getSong();
   },

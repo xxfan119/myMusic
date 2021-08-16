@@ -1,58 +1,65 @@
 <template>
   <div class="searchres">
-   <ul>
-        <li v-for="(item,index) of resultData.list" :key="item.songid" @click="play(index)">
-         <span>{{ item.songname }}</span>
-         <div>
-          <span v-for="singer in item.singer" :key="singer.id">{{ singer.name }}||</span>
+    <ul>
+      <li
+        v-for="(item, index) of resultData.list"
+        :key="item.songid"
+        @click="play(index)"
+      >
+        <span>{{ item.songname }}</span>
+        <div>
+          <span v-for="singer in item.singer" :key="singer.id"
+            >{{ singer.name }}||</span
+          >
           <span>{{ item.albumname }}</span>
-          <span class="mv">播放MV</span>
+          <span class="iconfont icon-lianhe11 mv"></span>
         </div>
-        </li>
-      </ul>
+      </li>
+    </ul>
   </div>
 </template>
 
 <script>
 export default {
-  data(){
-    return{
-      resultData:{}
-    }
+  data() {
+    return {
+      resultData: {},
+    };
   },
-  methods:{
-    async getData(){
-      let res=await this.$http.get('/search',{params:{
-        key:this.$route.params.key
-      }})
-      this.resultData=res.data.data
+  methods: {
+    async getData() {
+      let res = await this.$http.get("/search", {
+        params: {
+          key: this.$route.params.key,
+        },
+      });
+      this.resultData = res.data.data;
       console.log(res.data);
-    }
+    },
   },
- created(){
-   this.getData()
-     console.log(this.$route);
- }
-}
+  mounted() {
+    this.getData();
+    console.log(this.$route);
+  },
+};
 </script>
 
 <style lang="less" scoped>
-.searchres{
+.searchres {
   padding: 0 16px;
   ul {
-  li {
-    position: relative;
-    margin: 10px 0;
-    >span{
-    font-size: 18px;
+    li {
+      position: relative;
+      margin: 10px 0;
+      > span {
+        font-size: 18px;
+      }
+    }
   }
+  .mv {
+    position: absolute;
+    top: 50%;
+    right: 20%;
   }
-  
-}
-.mv {
-  position: absolute;
-  top: 50%;
-  right: 20%;
-}
 }
 </style>

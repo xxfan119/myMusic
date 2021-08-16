@@ -77,7 +77,7 @@ export default {
       }
     },
   },
-  created() {
+  mounted() {
     this.fetchTopDetail();
   },
 };

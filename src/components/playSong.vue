@@ -218,7 +218,7 @@ export default {
       this.$store.commit("setPlayIndex", localStorage.getItem("index"));
     },
   },
-  created() {
+  mounted() {
     this.$nextTick(() => {
       this.audio = this.$refs.audio;
       this.getList();

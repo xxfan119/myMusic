@@ -27,7 +27,7 @@ export default {
       }
     },
   },
-  created() {
+  mounted() {
     this.$nextTick(() => {
       this.$refs.play.$el.className = "bt";
       this.$refs.luyou.$el.style.paddingBottom = 80 + "px";

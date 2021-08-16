@@ -93,7 +93,7 @@ export default {
     },
   },
 
-  created() {
+  mounted() {
     this.getData();
   },
 };

@@ -344,7 +344,7 @@ export default {
       this.songcurrent = this.getTime(thistime);
     },
   },
-  created() {
+  mounted() {
     this.$nextTick(() => {
       this.containerHeight = document.querySelector("#container");
     });

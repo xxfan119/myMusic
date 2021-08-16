@@ -110,7 +110,7 @@
       <div class="rank">
         <div>
           <span>排行榜</span>
-          <span @click="toRank">更多<van-icon name="arrow"/></span>
+          <span @click="toRank">更多<van-icon name="arrow" /></span>
         </div>
         <van-swipe class="ranklist" :show-indicators="false" :loop="false">
           <van-swipe-item
@@ -238,7 +238,7 @@ export default {
       this.fecthMV();
     },
   },
-  created() {
+  mounted() {
     this.getInfo();
   },
 };
